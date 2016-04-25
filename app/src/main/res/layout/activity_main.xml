@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/locationEditText"
-        android:hint="Enter Zip Code"
+        android:hint="Enter City"
         android:layout_above="@+id/findWeatherButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

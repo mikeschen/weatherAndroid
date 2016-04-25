@@ -1,13 +1,14 @@
 package com.example.guest.weather.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.example.guest.weather.R;
+import com.example.guest.weather.adapters.WeatherListAdapter;
 import com.example.guest.weather.models.Weather;
 import com.example.guest.weather.services.WeatherService;
 
@@ -22,9 +23,12 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
-    public ArrayList<Weather> mWeathers = new ArrayList<>();
-    @Bind(R.id.listView)
-    ListView mListView;
+    @Bind(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    private WeatherListAdapter mAdapter;
+
+
+    public ArrayList<Weather> mWeather = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,23 +54,20 @@ public class WeatherActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                mWeathers = weatherService.processResults(response);
+                mWeather = weatherService.processResults(response);
 
                 WeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-                        String[] weatherMaxes = new String[mWeathers.size()];
-                        for (int i = 0; i < weatherMaxes.length; i++) {
-                            weatherMaxes[i] = String.valueOf(mWeathers.get(i).getMaxTemp());
+                        for (Weather weather : mWeather) {
+                            Log.d("WEATHER", weather.getMaxTemp() + "");
                         }
+                        mAdapter = new WeatherListAdapter(WeatherActivity.this, mWeather);
 
-                        ArrayAdapter adapter = new ArrayAdapter(WeatherActivity.this, android.R.layout.simple_list_item_1, weatherMaxes);
-                        mListView.setAdapter(adapter);
-
-                        for (Weather weather : mWeathers) {
-                            Log.d(TAG, "maxTemp" + weather.getMaxTemp());
-                        }
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }

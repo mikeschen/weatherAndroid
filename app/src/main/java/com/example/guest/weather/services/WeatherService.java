@@ -59,18 +59,20 @@ public class WeatherService {
             if (response.isSuccessful()) {
                 JSONObject weatherJSON = new JSONObject(jsonData);
                 JSONArray listJSON = weatherJSON.getJSONArray("list");
+
                 for (int i = 0; i < listJSON.length(); i++) {
                     JSONObject dayJSON = listJSON.getJSONObject(i);
                     int maxTemp = dayJSON.getJSONObject("temp").getInt("max");
                     int minTemp = dayJSON.getJSONObject("temp").getInt("min");
-                    Log.d(TAG, "testData" + dayJSON);
+                    String image = dayJSON.getJSONArray("weather").getJSONObject(0).getString("icon");
+                    Log.d(TAG, "testImage" + image);
                     long dateJSON = (dayJSON.getLong("dt") * 1000);
 
                     String date;
                     SimpleDateFormat df = new SimpleDateFormat("EEEE");
                     date = df.format(dateJSON);
 
-                    Weather weather = new Weather(maxTemp, minTemp, date);
+                    Weather weather = new Weather(maxTemp, minTemp, date, image);
                     weathers.add(weather);
                 }
             }

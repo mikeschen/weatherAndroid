@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.guest.weather.R;
 import com.example.guest.weather.models.Weather;
 import com.example.guest.weather.ui.WeatherDetailActivity;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -80,6 +81,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
             mDateTextView.setText(weather.getDate());
             mMaxTextView.setText("High: " + weather.getMaxTemp());
             mMinTextView.setText("Low: " + weather.getMinTemp());
+            Picasso.with(mContext).load(weather.getImageUrl()).into(mWeatherImageView);
         }
     }
 }

@@ -21,7 +21,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class WeatherActivity extends AppCompatActivity {
+public class WeatherListActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -56,16 +56,16 @@ public class WeatherActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mWeather = weatherService.processResults(response);
 
-                WeatherActivity.this.runOnUiThread(new Runnable() {
+                WeatherListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         for (Weather weather : mWeather) {
                             Log.d("WEATHER", weather.getMaxTemp() + "");
                         }
-                        mAdapter = new WeatherListAdapter(WeatherActivity.this, mWeather);
+                        mAdapter = new WeatherListAdapter(WeatherListActivity.this, mWeather);
 
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }

@@ -35,6 +35,11 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mWeather.get(position).getMaxTemp() + "";
+        return mWeather.get(position).getDate() + "";
     }
+
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return mWeather.get(position).getMinTemp() + "";
+//    }
 }

@@ -52,6 +52,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
     }
 
     public class WeatherViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.dateTextView) TextView mDateTextView;
         @Bind(R.id.weatherImageView) ImageView mWeatherImageView;
         @Bind(R.id.weatherMaxTextView) TextView mMaxTextView;
         private Context mContext;
@@ -75,7 +76,8 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         }
 
         public void bindWeather(Weather weather) {
-            mMaxTextView.setText("High Temp of " + weather.getMaxTemp());
+            mDateTextView.setText(weather.getDate());
+            mMaxTextView.setText("High: " + weather.getMaxTemp());
         }
     }
 }

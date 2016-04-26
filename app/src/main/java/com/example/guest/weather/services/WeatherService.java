@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
@@ -61,8 +62,14 @@ public class WeatherService {
                 for (int i = 0; i < listJSON.length(); i++) {
                     JSONObject dayJSON = listJSON.getJSONObject(i);
                     int maxTemp = dayJSON.getJSONObject("temp").getInt("max");
-                    Log.d(TAG, "testMAx" + maxTemp);
-                    Weather weather = new Weather(maxTemp);
+                    Log.d(TAG, "testData" + dayJSON);
+                    long dateJSON = (dayJSON.getLong("dt") * 1000);
+
+                    String date;
+                    SimpleDateFormat df = new SimpleDateFormat("EEEE");
+                    date = df.format(dateJSON);
+
+                    Weather weather = new Weather(maxTemp, date);
                     weathers.add(weather);
                 }
             }

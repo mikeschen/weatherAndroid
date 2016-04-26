@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
  */
 public class WeatherDetailFragment extends Fragment {
 
+    @Bind(R.id.dateTextView) TextView mDateTextView;
     @Bind(R.id.weatherMaxTextView) TextView mWeatherMaxTextView;
 
     private Weather mWeather;
@@ -47,8 +48,8 @@ public class WeatherDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_weather_detail, container, false);
         ButterKnife.bind(this, view);
         // Inflate the layout for this fragment
-
-        mWeatherMaxTextView.setText((mWeather.getMaxTemp() + "High"));
+        mDateTextView.setText((mWeather.getDate()));
+        mWeatherMaxTextView.setText((mWeather.getMaxTemp() + " High"));
         return view;
     }
 

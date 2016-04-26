@@ -60,7 +60,7 @@ public class WeatherListActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         for (Weather weather : mWeather) {
-                            Log.d("WEATHER", weather.getMaxTemp() + "");
+                            Log.d("DATE", weather.getDate());
                         }
                         mAdapter = new WeatherListAdapter(WeatherListActivity.this, mWeather);
 

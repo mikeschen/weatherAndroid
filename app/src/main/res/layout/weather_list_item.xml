@@ -21,6 +21,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/dateTextView"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Day"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/weatherMaxTextView"
             android:textSize="20dp"
             android:textStyle="bold"

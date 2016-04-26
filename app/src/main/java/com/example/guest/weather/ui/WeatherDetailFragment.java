@@ -23,6 +23,7 @@ public class WeatherDetailFragment extends Fragment {
 
     @Bind(R.id.dateTextView) TextView mDateTextView;
     @Bind(R.id.weatherMaxTextView) TextView mWeatherMaxTextView;
+    @Bind(R.id.weatherMinTextView) TextView mWeatherMinTextView;
 
     private Weather mWeather;
 
@@ -50,6 +51,7 @@ public class WeatherDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         mDateTextView.setText((mWeather.getDate()));
         mWeatherMaxTextView.setText((mWeather.getMaxTemp() + " High"));
+        mWeatherMinTextView.setText((mWeather.getMinTemp() + " Low"));
         return view;
     }
 

@@ -62,6 +62,7 @@ public class WeatherService {
                 for (int i = 0; i < listJSON.length(); i++) {
                     JSONObject dayJSON = listJSON.getJSONObject(i);
                     int maxTemp = dayJSON.getJSONObject("temp").getInt("max");
+                    int minTemp = dayJSON.getJSONObject("temp").getInt("min");
                     Log.d(TAG, "testData" + dayJSON);
                     long dateJSON = (dayJSON.getLong("dt") * 1000);
 
@@ -69,7 +70,7 @@ public class WeatherService {
                     SimpleDateFormat df = new SimpleDateFormat("EEEE");
                     date = df.format(dateJSON);
 
-                    Weather weather = new Weather(maxTemp, date);
+                    Weather weather = new Weather(maxTemp, minTemp, date);
                     weathers.add(weather);
                 }
             }

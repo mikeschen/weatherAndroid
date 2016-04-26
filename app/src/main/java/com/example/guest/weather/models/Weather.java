@@ -10,16 +10,23 @@ import org.parceler.Parcel;
 public class Weather {
 
     private int mTempMax;
+    private int mTempMin;
     private String mDate;
 
-    public Weather(int tempMax, String date) {
+    public Weather(int tempMax, int tempMin, String date) {
         this.mTempMax = tempMax * 9/5 - 460;
+        this.mTempMin = tempMin * 9/5 - 460;
         this.mDate = date;
         }
 
     public int getMaxTemp() {
         return mTempMax;
     }
+
+    public int getMinTemp() {
+        return mTempMin;
+    }
+
 
     public String getDate() {
         return mDate;

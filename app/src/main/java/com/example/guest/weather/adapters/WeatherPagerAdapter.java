@@ -3,6 +3,7 @@ package com.example.guest.weather.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.example.guest.weather.models.Weather;
 import com.example.guest.weather.ui.WeatherDetailFragment;
@@ -28,6 +29,7 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
+        Log.d("test2", mWeather.size() + "");
         return mWeather.size();
     }
 

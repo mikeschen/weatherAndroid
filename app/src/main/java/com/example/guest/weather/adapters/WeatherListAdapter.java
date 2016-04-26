@@ -3,6 +3,7 @@ package com.example.guest.weather.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
 
     @Override
     public int getItemCount() {
+        Log.d("test1", mWeather.size() + "");
         return mWeather.size();
     }
 
